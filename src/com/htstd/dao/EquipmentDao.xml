@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.htstd.dao.EquipmentDao">
+	<resultMap type="com.htstd.domain.equipmentPojo" id="equipmentMap">
+		<result property="equipmentUUID" column="EQUIPMENT_UUID" />
+		<result property="equipmentName" column="EQUIPMENT_NAME" />
+		<result property="equipmentModel" column="EQUIPMENT_MODEL" />
+		<result property="equipmentSpecification" column="EQUIPMENT_SPECIFICATION" />
+		<result property="serialNumber" column="SERIAL_NUMBER" />
+		<result property="equipmentStatus" column="EQUIPMENT_STATUS" />
+		<result property="accuracyLevel" column="ACCURACY_LEVEL" />
+		<result property="abcClassification" column="ABC_CLASSIFICATION" />
+		<result property="abcNumber" column="ABC_NUMBER" />
+		<result property="colorAppendix" column="COLOR_APPENDIX" />
+		<result property="equipmentPerson" column="EQUIPMENT_PERSON" />
+		<result property="equipmentVerified" column="EQUIPMENT_VERIFIED" />
+		<result property="manufacturer" column="MANUFACTURER" />
+		<result property="measuringRange" column="MEASURING_RANGE" />
+		<result property="uncertainty" column="UNCERTAINTY" />
+		<result property="fileNumber" column="FILE_NUMBER" />
+		<result property="customerNumber" column="CUSTOMER_NUMBER" />
+		<result property="productionDate" column="PRODUCTION_DATE" />
+		<result property="measurementCategory" column="MEASUREMENT_CATEGORY" />
+		<result property="equipmentCount" column="EQUIPMENT_COUNT" />
+		<result property="basicRemark" column="BASIC_REMARK" />
+		<result property="checkRemark" column="CHECK_REMARK" />
+		<result property="equipmentCreater" column="EQUIPMENT_CREATER" />
+		<result property="createrDate" column="CREATER_DATE" />
+		<result property="verificationInstitution" column="VERIFICATION_INSTITUTION" />
+		<result property="verificationDate" column="VERIFICATION_DATE" />
+		<result property="verificationCycle" column="VERIFICATION_CYCLE" />
+		<result property="validDate" column="VALID_DATE" />
+		<result property="verificationResult" column="VERIFICATION_RESULT" />
+		<result property="inspectionType" column="INSPECTION_TYPE" />
+		<result property="calibrationFee" column="CALIBRATION_FEE" />
+		<result property="budgetFee" column="BUDGET_FEE" />
+		<result property="certificateNumber" column="CERTIFICATE_NUMBER" />
+		<result property="firstInspectionDate" column="FIRST_INSPECTION_DATE" />
+		<result property="verificationUnit" column="VERIFICATION_UNIT" />
+		<result property="completionDate" column="COMPLETION_DATE" />
+		<result property="purchaseDate" column="PURCHASE_DATE" />
+		<result property="purchasePrice" column="PURCHASE_PRICE" />
+		<result property="storageRemark" column="STORAGE_REMARK" />
+		<result property="subordinateSector" column="SUBORDINATE_SECTOR" />
+		<result property="equipmentUser" column="EQUIPMENT_USER" />
+		<result property="receiveDate" column="RECEIVE_DATE" />
+		<result property="enableDate" column="ENABLE_DATE" />
+		<result property="equipmentUseunit" column="EQUIPMENT_USEUNIT" />
+		<result property="receiveState" column="RECEIVE_STATE" />
+		<result property="planNumber" column="PLAN_NUMBER" />
+		<result property="orderNumber" column="ORDER_NUMBER" />
+		<result property="planState" column="ORDER_NUMBER" />
+		<result property="orderState" column="ORDER_NUMBER" />
+		<result property="spare_1" column="SPARE_1" />
+		<result property="spare_2" column="SPARE_2" />
+		<result property="spare_3" column="SPARE_3" />
+		<result property="spare_4" column="SPARE_4" />
+		<result property="spare_5" column="SPARE_5" />
+		<result property="spare_6" column="SPARE_6" />
+		<result property="alterField_1" column="ALTER_FIELD_1" />
+		<result property="alterField_2" column="ALTER_FIELD_2" />
+		<result property="alterField_3" column="ALTER_FIELD_3" />
+		<result property="alterField_4" column="ALTER_FIELD_4" />
+	</resultMap>
+
+	<!-- 器具列表分页查询 -->
+	<select id="selectEquipmentList" resultMap="equipmentMap"
+		parameterType="java.util.HashMap">
+		SELECT * FROM equipment WHERE 1=1
+		LIMIT
+		#{startPos},#{pageSize}
+	</select>
+	<!-- 查询器具总行数 -->
+	<select id="selectEquipmentListTotal" resultType="java.lang.Integer">
+		SELECT COUNT(*) FROM equipment
+	</select>
+	<!-- 添加器具信息 -->
+	<insert id="insertEquipment" parameterType="com.htstd.domain.equipmentPojo">
+		INSERT INTO equipment
+		(
+		EQUIPMENT_UUID,
+		EQUIPMENT_NAME,
+		EQUIPMENT_MODEL,
+		EQUIPMENT_SPECIFICATION,
+		SERIAL_NUMBER,
+		EQUIPMENT_STATUS,
+		ACCURACY_LEVEL,
+		ABC_CLASSIFICATION,
+		ABC_NUMBER,
+		COLOR_APPENDIX,
+		EQUIPMENT_PERSON,
+		EQUIPMENT_VERIFIED,
+		MANUFACTURER,
+		MEASURING_RANGE,
+		UNCERTAINTY,
+		FILE_NUMBER,
+		CUSTOMER_NUMBER,
+		PRODUCTION_DATE,
+		MEASUREMENT_CATEGORY,
+		EQUIPMENT_COUNT,
+		BASIC_REMARK,
+		CHECK_REMARK,
+		EQUIPMENT_CREATER,
+		CREATER_DATE,
+		VERIFICATION_INSTITUTION,
+		VERIFICATION_DATE,
+		VERIFICATION_CYCLE,
+		VALID_DATE,
+		VERIFICATION_RESULT,
+		INSPECTION_TYPE,
+		CALIBRATION_FEE,
+		BUDGET_FEE,
+		CERTIFICATE_NUMBER,
+		FIRST_INSPECTION_DATE,
+		VERIFICATION_UNIT,
+		COMPLETION_DATE,
+		PURCHASE_DATE,
+		PURCHASE_PRICE,
+		STORAGE_REMARK,
+		SUBORDINATE_SECTOR,
+		EQUIPMENT_USER,
+		RECEIVE_DATE,
+		ENABLE_DATE,
+		EQUIPMENT_USEUNIT,
+		RECEIVE_STATE,
+		SPARE_1,
+		SPARE_2,
+		SPARE_3,
+		SPARE_4,
+		SPARE_5,
+		SPARE_6
+		)
+
+		VALUES (
+		#{equipmentUUID,jdbcType=VARCHAR},
+		#{equipmentName,jdbcType=VARCHAR},
+		#{equipmentModel,jdbcType=VARCHAR},
+		#{equipmentSpecification,jdbcType=VARCHAR},
+		#{serialNumber,jdbcType=VARCHAR},
+		#{equipmentStatus,jdbcType=VARCHAR},
+		#{accuracyLevel,jdbcType=VARCHAR},
+		#{abcClassification,jdbcType=VARCHAR},
+		#{abcNumber,jdbcType=VARCHAR},
+		#{colorAppendix,jdbcType=VARCHAR},
+		#{equipmentPerson,jdbcType=VARCHAR},
+		#{equipmentVerified,jdbcType=VARCHAR},
+		#{manufacturer,jdbcType=VARCHAR},
+		#{measuringRange,jdbcType=VARCHAR},
+		#{uncertainty,jdbcType=VARCHAR},
+		#{fileNumber,jdbcType=VARCHAR},
+		#{customerNumber,jdbcType=VARCHAR},
+		#{productionDate,jdbcType=DATE},
+		#{measurementCategory,jdbcType=VARCHAR},
+		#{equipmentCount,jdbcType=INTEGER},
+		#{basicRemark,jdbcType=VARCHAR},
+		#{checkRemark,jdbcType=VARCHAR},
+		#{equipmentCreater,jdbcType=VARCHAR},
+		#{createrDate,jdbcType=DATE},
+		#{verificationInstitution,jdbcType=VARCHAR},
+		#{verificationDate,jdbcType=DATE},
+		#{verificationCycle,jdbcType=INTEGER},
+		#{validDate,jdbcType=DATE},
+		#{verificationResult,jdbcType=VARCHAR},
+		#{inspectionType,jdbcType=VARCHAR},
+		#{calibrationFee,jdbcType=DOUBLE},
+		#{budgetFee,jdbcType=DOUBLE},
+		#{certificateNumber,jdbcType=VARCHAR},
+		#{firstInspectionDate,jdbcType=DATE},
+		#{verificationUnit,jdbcType=VARCHAR},
+		#{completionDate,jdbcType=DATE},
+		#{purchaseDate,jdbcType=DATE},
+		#{purchasePrice,jdbcType=DOUBLE},
+		#{storageRemark,jdbcType=VARCHAR},
+		#{subordinateSector,jdbcType=VARCHAR},
+		#{equipmentUser,jdbcType=VARCHAR},
+		#{receiveDate,jdbcType=DATE},
+		#{enableDate,jdbcType=DATE},
+		#{equipmentUseunit,jdbcType=VARCHAR},
+		#{receiveState,jdbcType=VARCHAR},
+		#{spare_1,jdbcType=VARCHAR},
+		#{spare_2,jdbcType=VARCHAR},
+		#{spare_3,jdbcType=VARCHAR},
+		#{spare_4,jdbcType=VARCHAR},
+		#{spare_5,jdbcType=VARCHAR},
+		#{spare_6,jdbcType=VARCHAR}
+		)
+	</insert>
+	<!-- 批量修改器具信息 -->
+	<update id="updateEquipment" parameterType="java.util.HashMap">
+		UPDATE equipment
+		<trim prefix="set" suffixOverrides=",">
+			<if test="equipment.equipmentName!=null">EQUIPMENT_NAME=#{equipment.equipmentName,jdbcType=VARCHAR},</if>
+			<if test="equipment.equipmentModel!=null">EQUIPMENT_MODEL=#{equipment.equipmentModel,jdbcType=VARCHAR},</if>
+			<if test="equipment.equipmentSpecification!=null">EQUIPMENT_SPECIFICATION=#{equipment.equipmentSpecification,jdbcType=VARCHAR},
+			</if>
+			<if test="equipment.serialNumber!=null">SERIAL_NUMBER=#{equipment.serialNumber,jdbcType=VARCHAR},</if>
+			<if test="equipment.equipmentStatus!=null">EQUIPMENT_STATUS=#{equipment.equipmentStatus,jdbcType=VARCHAR},
+			</if>
+			<if test="equipment.accuracyLevel!=null">ACCURACY_LEVEL=#{equipment.accuracyLevel,jdbcType=VARCHAR},</if>
+			<if test="equipment.abcClassification!=null">ABC_CLASSIFICATION=#{equipment.abcClassification,jdbcType=VARCHAR},
+			</if>
+			<if test="equipment.abcNumber!=null">ABC_NUMBER=#{equipment.abcNumber,jdbcType=VARCHAR},</if>
+			<if test="equipment.equipmentPerson!=null">EQUIPMENT_PERSON=#{equipment.equipmentPerson,jdbcType=VARCHAR},
+			</if>
+			<if test="equipment.equipmentVerified!=null">EQUIPMENT_VERIFIED=#{equipment.equipmentVerified,jdbcType=VARCHAR},
+			</if>
+			<if test="equipment.manufacturer!=null">MANUFACTURER=#{equipment.manufacturer,jdbcType=VARCHAR},</if>
+			<if test="equipment.measuringRange!=null">MEASURING_RANGE=#{equipment.measuringRange,jdbcType=VARCHAR},</if>
+			<if test="equipment.uncertainty!=null">UNCERTAINTY=#{equipment.uncertainty,jdbcType=VARCHAR},</if>
+			<if test="equipment.fileNumber!=null">FILE_NUMBER=#{equipment.fileNumber,jdbcType=VARCHAR},</if>
+			<if test="equipment.customerNumber!=null">CUSTOMER_NUMBER=#{equipment.customerNumber,jdbcType=VARCHAR},</if>
+			<if test="equipment.productionDate!=null">PRODUCTION_DATE=#{equipment.productionDate,jdbcType=DATE},</if>
+			<if test="equipment.measurementCategory!=null">MEASUREMENT_CATEGORY=#{equipment.measurementCategory,jdbcType=VARCHAR},
+			</if>
+			<if test="equipment.equipmentCount!=null">EQUIPMENT_COUNT=#{equipment.equipmentCount,jdbcType=INTEGER},</if>
+			<if test="equipment.basicRemark!=null">BASIC_REMARK=#{equipment.basicRemark,jdbcType=VARCHAR},</if>
+			<if test="equipment.checkRemark!=null">CHECK_REMARK=#{equipment.checkRemark,jdbcType=VARCHAR},</if>
+			<if test="equipment.equipmentCreater!=null">EQUIPMENT_CREATER=#{equipment.equipmentCreater,jdbcType=VARCHAR},
+			</if>
+			<if test="equipment.createrDate!=null">CREATER_DATE=#{equipment.createrDate,jdbcType=DATE},</if>
+			<if test="equipment.verificationInstitution!=null">VERIFICATION_INSTITUTION=#{equipment.verificationInstitution,jdbcType=VARCHAR},
+			</if>
+			<if test="equipment.verificationDate!=null">VERIFICATION_DATE=#{equipment.verificationDate,jdbcType=DATE},</if>
+			<if test="equipment.verificationCycle!=null">VERIFICATION_CYCLE=#{equipment.verificationCycle,jdbcType=INTEGER},
+			</if>
+			<if test="equipment.validDate!=null">VALID_DATE=#{equipment.validDate,jdbcType=DATE},</if>
+			<if test="equipment.verificationResult!=null">VERIFICATION_RESULT=#{equipment.verificationResult,jdbcType=VARCHAR},
+			</if>
+			<if test="equipment.inspectionType!=null">INSPECTION_TYPE=#{equipment.inspectionType,jdbcType=VARCHAR},</if>
+			<if test="equipment.calibrationFee!=null">CALIBRATION_FEE=#{equipment.calibrationFee,jdbcType=DOUBLE},</if>
+			<if test="equipment.budgetFee!=null">BUDGET_FEE=#{equipment.budgetFee,jdbcType=DOUBLE},</if>
+			<if test="equipment.certificateNumber!=null">CERTIFICATE_NUMBER=#{equipment.certificateNumber,jdbcType=VARCHAR},
+			</if>
+			<if test="equipment.firstInspectionDate!=null">FIRST_INSPECTION_DATE=#{equipment.firstInspectionDate,jdbcType=DATE},
+			</if>
+			<if test="equipment.verificationUnit!=null">VERIFICATION_UNIT=#{equipment.verificationUnit,jdbcType=VARCHAR},
+			</if>
+			<if test="equipment.completionDate!=null">COMPLETION_DATE=#{equipment.completionDate,jdbcType=DATE},</if>
+			<if test="equipment.purchaseDate!=null">PURCHASE_DATE=#{equipment.purchaseDate,jdbcType=DATE},</if>
+			<if test="equipment.purchasePrice!=null">PURCHASE_PRICE=#{equipment.purchasePrice,jdbcType=DOUBLE},</if>
+			<if test="equipment.storageRemark!=null">STORAGE_REMARK=#{equipment.storageRemark,jdbcType=VARCHAR},</if>
+			<if test="equipment.subordinateSector!=null">SUBORDINATE_SECTOR=#{equipment.subordinateSector,jdbcType=VARCHAR},
+			</if>
+			<if test="equipment.equipmentUser!=null">EQUIPMENT_USER=#{equipment.equipmentUser,jdbcType=VARCHAR},</if>
+			<if test="equipment.receiveDate!=null">RECEIVE_DATE=#{equipment.receiveDate,jdbcType=DATE},</if>
+			<if test="equipment.enableDate!=null">ENABLE_DATE=#{equipment.enableDate,jdbcType=DATE},</if>
+			<if test="equipment.equipmentUseunit!=null">EQUIPMENT_USEUNIT=#{equipment.equipmentUseunit,jdbcType=VARCHAR},
+			</if>
+			<if test="equipment.receiveState!=null">RECEIVE_STATE=#{equipment.receiveState,jdbcType=VARCHAR},</if>
+			<if test="equipment.spare_1 !=null">SPARE_1=#{equipment.spare_1,jdbcType=VARCHAR},</if>
+			<if test="equipment.spare_2 !=null">SPARE_2=#{equipment.spare_2,jdbcType=VARCHAR},</if>
+			<if test="equipment.spare_3 !=null">SPARE_3=#{equipment.spare_3,jdbcType=VARCHAR},</if>
+			<if test="equipment.spare_4 !=null">SPARE_4=#{equipment.spare_4,jdbcType=VARCHAR},</if>
+			<if test="equipment.spare_5 !=null">SPARE_5=#{equipment.spare_5,jdbcType=VARCHAR},</if>
+			<if test="equipment.spare_6 !=null">SPARE_6=#{equipment.spare_6,jdbcType=VARCHAR},</if>
+		</trim>
+		WHERE EQUIPMENT_UUID in
+		<foreach collection="equipmentUUID" item="item" index="index"
+			open="(" close=")" separator=",">
+			#{item}
+		</foreach>
+	</update>
+	
+	<!-- 修改器具信息 -->
+	<update id="updateEquipmentByUUID" parameterType="com.htstd.domain.equipmentPojo" >
+		UPDATE equipment
+		<trim prefix="set" suffixOverrides=",">
+			<if test="equipmentName!=null">EQUIPMENT_NAME=#{equipmentName,jdbcType=VARCHAR},</if>
+			<if test="equipmentModel!=null">EQUIPMENT_MODEL=#{equipmentModel,jdbcType=VARCHAR},</if>
+			<if test="equipmentSpecification!=null">EQUIPMENT_SPECIFICATION=#{equipmentSpecification,jdbcType=VARCHAR},
+			</if>
+			<if test="serialNumber!=null">SERIAL_NUMBER=#{serialNumber,jdbcType=VARCHAR},</if>
+			<if test="equipmentStatus!=null">EQUIPMENT_STATUS=#{equipmentStatus,jdbcType=VARCHAR},
+			</if>
+			<if test="accuracyLevel!=null">ACCURACY_LEVEL=#{accuracyLevel,jdbcType=VARCHAR},</if>
+			<if test="abcClassification!=null">ABC_CLASSIFICATION=#{abcClassification,jdbcType=VARCHAR},
+			</if>
+			<if test="abcNumber!=null">ABC_NUMBER=#{abcNumber,jdbcType=VARCHAR},</if>
+			<if test="equipmentPerson!=null">EQUIPMENT_PERSON=#{equipmentPerson,jdbcType=VARCHAR},
+			</if>
+			<if test="equipmentVerified!=null">EQUIPMENT_VERIFIED=#{equipmentVerified,jdbcType=VARCHAR},
+			</if>
+			<if test="manufacturer!=null">MANUFACTURER=#{manufacturer,jdbcType=VARCHAR},</if>
+			<if test="measuringRange!=null">MEASURING_RANGE=#{measuringRange,jdbcType=VARCHAR},</if>
+			<if test="uncertainty!=null">UNCERTAINTY=#{uncertainty,jdbcType=VARCHAR},</if>
+			<if test="fileNumber!=null">FILE_NUMBER=#{fileNumber,jdbcType=VARCHAR},</if>
+			<if test="customerNumber!=null">CUSTOMER_NUMBER=#{customerNumber,jdbcType=VARCHAR},</if>
+			<if test="productionDate!=null">PRODUCTION_DATE=#{productionDate,jdbcType=DATE},</if>
+			<if test="measurementCategory!=null">MEASUREMENT_CATEGORY=#{measurementCategory,jdbcType=VARCHAR},
+			</if>
+			<if test="equipmentCount!=null">EQUIPMENT_COUNT=#{equipmentCount,jdbcType=INTEGER},</if>
+			<if test="basicRemark!=null">BASIC_REMARK=#{basicRemark,jdbcType=VARCHAR},</if>
+			<if test="checkRemark!=null">CHECK_REMARK=#{checkRemark,jdbcType=VARCHAR},</if>
+			<if test="equipmentCreater!=null">EQUIPMENT_CREATER=#{equipmentCreater,jdbcType=VARCHAR},
+			</if>
+			<if test="createrDate!=null">CREATER_DATE=#{createrDate,jdbcType=DATE},</if>
+			<if test="verificationInstitution!=null">VERIFICATION_INSTITUTION=#{verificationInstitution,jdbcType=VARCHAR},
+			</if>
+			<if test="verificationDate!=null">VERIFICATION_DATE=#{verificationDate,jdbcType=DATE},</if>
+			<if test="verificationCycle!=null">VERIFICATION_CYCLE=#{verificationCycle,jdbcType=INTEGER},
+			</if>
+			<if test="validDate!=null">VALID_DATE=#{validDate,jdbcType=DATE},</if>
+			<if test="verificationResult!=null">VERIFICATION_RESULT=#{verificationResult,jdbcType=VARCHAR},
+			</if>
+			<if test="inspectionType!=null">INSPECTION_TYPE=#{inspectionType,jdbcType=VARCHAR},</if>
+			<if test="calibrationFee!=null">CALIBRATION_FEE=#{calibrationFee,jdbcType=DOUBLE},</if>
+			<if test="budgetFee!=null">BUDGET_FEE=#{budgetFee,jdbcType=DOUBLE},</if>
+			<if test="certificateNumber!=null">CERTIFICATE_NUMBER=#{certificateNumber,jdbcType=VARCHAR},
+			</if>
+			<if test="firstInspectionDate!=null">FIRST_INSPECTION_DATE=#{firstInspectionDate,jdbcType=DATE},
+			</if>
+			<if test="verificationUnit!=null">VERIFICATION_UNIT=#{verificationUnit,jdbcType=VARCHAR},
+			</if>
+			<if test="completionDate!=null">COMPLETION_DATE=#{completionDate,jdbcType=DATE},</if>
+			<if test="purchaseDate!=null">PURCHASE_DATE=#{purchaseDate,jdbcType=DATE},</if>
+			<if test="purchasePrice!=null">PURCHASE_PRICE=#{purchasePrice,jdbcType=DOUBLE},</if>
+			<if test="storageRemark!=null">STORAGE_REMARK=#{storageRemark,jdbcType=VARCHAR},</if>
+			<if test="subordinateSector!=null">SUBORDINATE_SECTOR=#{subordinateSector,jdbcType=VARCHAR},
+			</if>
+			<if test="equipmentUser!=null">EQUIPMENT_USER=#{equipmentUser,jdbcType=VARCHAR},</if>
+			<if test="receiveDate!=null">RECEIVE_DATE=#{receiveDate,jdbcType=DATE},</if>
+			<if test="enableDate!=null">ENABLE_DATE=#{enableDate,jdbcType=DATE},</if>
+			<if test="equipmentUseunit!=null">EQUIPMENT_USEUNIT=#{equipmentUseunit,jdbcType=VARCHAR},
+			</if>
+			<if test="receiveState!=null">RECEIVE_STATE=#{receiveState,jdbcType=VARCHAR},</if>
+			<if test="spare_1 !=null">SPARE_1=#{spare_1,jdbcType=VARCHAR},</if>
+			<if test="spare_2 !=null">SPARE_2=#{spare_2,jdbcType=VARCHAR},</if>
+			<if test="spare_3 !=null">SPARE_3=#{spare_3,jdbcType=VARCHAR},</if>
+			<if test="spare_4 !=null">SPARE_4=#{spare_4,jdbcType=VARCHAR},</if>
+			<if test="spare_5 !=null">SPARE_5=#{spare_5,jdbcType=VARCHAR},</if>
+			<if test="spare_6 !=null">SPARE_6=#{spare_6,jdbcType=VARCHAR},</if>
+		</trim>
+		WHERE EQUIPMENT_UUID = #{equipmentUUID,jdbcType=VARCHAR}
+	</update>
+	
+	<!-- 批量刪除器具信息 -->
+	<delete id="deleteEquipment" parameterType="java.util.HashMap">
+		delete from equipment where EQUIPMENT_UUID in
+		<foreach collection="equipmentUUID" item="item" index="index"
+			open="(" close=")" separator=",">
+			#{item}
+		</foreach>
+	</delete>
+	<!-- 根據多个UUID查詢器具信息 -->
+	<select id="selectEquipmentByUUIDs" resultMap="equipmentMap" parameterType="java.util.HashMap">
+	select * from equipment where equipment_uuid in 
+	<foreach collection="equipmentUUID" item="item" index="index"
+			open="(" close=")" separator=",">
+			#{item}
+		</foreach>
+	</select>
+	
+	<!-- 根據多个UUID查詢器具信息 -->
+	<select id="selectEquipmentByUUID" resultMap="equipmentMap" parameterType="java.lang.String">
+	select * from equipment where equipment_uuid = #{equipmentUUID}	
+	</select>
+	
+	<!-- 根据 器具名称 出厂编号  型号  生产厂家 确定器具是否存在 -->
+	<select id="selectEquipmentByNameAndModel" resultType="com.htstd.domain.equipmentPojo" parameterType="java.util.HashMap">
+	SELECT * FROM equipment WHERE EQUIPMENT_NAME = #{equipmentName,jdbcType=VARCHAR} AND SERIAL_NUMBER = #{serialNumber,jdbcType=VARCHAR}
+	AND EQUIPMENT_MODEL = #{equipmentModel,jdbcType=VARCHAR} AND MANUFACTURER = #{manufacturer,jdbcType=VARCHAR} 
+	</select>
+
+
+	
+
+
+</mapper>

@@ -1,0 +1,112 @@
+
+/*  gray */
+.gray,.gray:hover{
+	color: #333;
+	border-color: #e5e5e5;
+	background: #e5e5e5;
+}
+a.gray:hover,
+a.gray:active{ /*灰色得到焦点时不变色，与默认按钮色一样，用于按钮带下拉菜单*/
+	background: #d8d8d8;
+	border: 1px solid #d8d8d8 !important;
+}
+
+
+/*  blue */
+.blue,.blue:hover{
+	color: #fff;
+	border-color: #4d90fe;
+	background: #4d90fe;
+}
+a.blue:hover,
+a.blue:active,
+a.blue:focus{
+	background: #0362fd;
+	border: 1px solid #0362fd !important;
+}
+
+
+/*  green */
+.green,.green:hover{
+	color: #fff;
+	border-color: #419A45;
+	background: #419A45;
+}
+a.green:hover,
+a.green:active,
+a.green:focus{
+	background: #47a74b;
+	border:1px solid transparent !important;
+}
+
+
+/*  Purple */
+.purple,.purple:hover{
+	color: white;
+	border-color: #852b99;
+	background: #852b99;
+}
+a.purple:hover,
+a.purple:active,
+a.purple:focus{
+	background: #6d1b81;
+	border:1px solid transparent !important;
+}
+
+
+/*  yellow */
+.yellow,.yellow:hover{
+	color: white;
+	border-color: #ffb848;
+	background: #ffb848;
+}
+a.yellow:hover,
+a.yellow:active,
+a.yellow:focus{
+	background: #eca22e;
+	border:1px solid transparent !important;
+}
+
+/*  black */
+.black,.black:hover{
+	color: white;
+	border-color: #555555;
+	background: #555555;
+}
+a.black:hover,
+a.black:active,
+a.black:focus{
+	background: #222222;
+	border:1px solid transparent !important;
+}
+
+
+
+/*  red */
+.red,.red:hover{
+	color: #fff;
+	border-color: #d84a38;
+	background: #d84a38;
+}
+a.red:hover,
+a.red:active,
+a.red:focus{
+	background: #bb2413;
+	border:1px solid transparent !important;
+}
+
+
+/*  yhblue */
+.yhblue,.yhblue:hover{
+	color: #fff;
+	border-color: #0f6099;
+	background: #0f6099;
+}
+a.yhblue:hover,
+a.yhblue:active,
+a.yhblue:focus{
+	background: #639ed0;
+	border:1px solid transparent !important;
+}
+
+

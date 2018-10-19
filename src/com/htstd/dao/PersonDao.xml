@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.htstd.dao.PersonDao">
+	<!-- 封装返回结果集,使数据库表中的字段与domain实体的字段关联 -->
+	<resultMap type="com.htstd.domain.logoPojo" id="logoMap">
+		<result property="id" column="id" />
+		<result property="path" column="path" />
+		<result property="userId" column="userId" />
+	</resultMap>
+	<resultMap type="com.htstd.domain.dataDictionaryPojo" id="dataMap">
+		<result property="id" column="id" />
+		<result property="dictionaryName" column="DICTIONARY_NAME" />
+		<result property="dictionaryValue" column="DICTIONARY_VALUE" />
+		<result property="dictionaryStatus" column="DICTIONARY_STATUS" />
+	</resultMap>
+	<resultMap type="com.htstd.domain.rolePojo" id="roleMap">
+		<result property="roleId" column="ROLE_ID" />
+		<result property="roleName" column="ROLE_NAME" />
+		<result property="rolePermission" column="ROLE_PERMISSION" />
+	</resultMap>
+	<resultMap type="com.htstd.domain.companyPojo" id="companyMap">
+		<result property="companyUUID" column="COMPANY_UUID" />
+		<result property="companyName" column="COMPANY_NAME" />
+		<result property="companyCode" column="COMPANY_CODE" />
+		<result property="companyAddress" column="COMPANY_ADDRESS" />
+		<result property="companyZipCode" column="COMPANY_ZIP_CODE" />
+		<result property="companyOpenBank" column="COMPANY_OPEN_BANK" />
+		<result property="companyCardNumber" column="COMPANY_CARD_NUMBER" />
+		<result property="cretificateName" column="CRETIFICATE_NAME" />
+		<result property="cretificateAddress" column="CRETIFICATE_ADDRESS" />
+		<result property="invoiceHead" column="INVOICE_HEAD" />
+		<result property="spare_1" column="SPARE_1" />
+		<result property="spare_2" column="SPARE_2" />
+		<result property="spare_3" column="SPARE_3" />
+	</resultMap>
+	<resultMap type="com.htstd.domain.userLoginPojo" id="userMap">
+		<result property="userUUID" column="USER_UUID" />
+		<result property="loginUser" column="LOGIN_USER" />
+		<result property="loginPassWord" column="LOGIN_PASSWORD" />
+		<result property="userName" column="USER_NAME" />
+		<result property="userEmail" column="USER_EMAIL" />
+		<result property="userAddress" column="USER_ADDRESS" />
+		<result property="userFax" column="USER_FAX" />
+		<result property="userPhone" column="USER_PHONE" />
+		<result property="userTelephone" column="USER_TELEPHONE" />
+		<result property="remark" column="REMARK" />
+		<result property="departmentUUID" column="DEPARTMENT_UUID" />
+		<result property="companyUUID" column="COMPANY_UUID" />
+		<result property="userLevel" column="USER_LEVEL" />
+		<result property="state" column="STATE" />
+		<result property="spare_1" column="SPARE_1" />
+		<result property="spare_2" column="SPARE_2" />
+		<result property="spare_3" column="SPARE_3" />
+		<result property="spare_4" column="SPARE_4" />
+	</resultMap>
+	<resultMap type="com.htstd.domain.departmentPojo" id="departmentMap">
+		<result property="departmentUUID" column="DEPARTMENT_UUID" />
+		<result property="departmentCode" column="DEPARTMENT_CODE" />
+		<result property="departmentName" column="DEPARTMENT_NAME" />
+		<result property="departmentCompanyUUID" column="DEPARTMENT_COMPANY_UUID" />
+		<result property="departmentParent" column="DEPARTMENT_PARENT" />
+		<result property="departmentNumber" column="DEPARTMENT_NUMBER" />
+		<result property="spare_1" column="SPARE_1" />
+		<result property="spare_2" column="SPARE_2" />
+		<result property="spare_3" column="SPARE_3" />
+	</resultMap>
+	<resultMap type="com.htstd.VO.userVO" id="userVOMap">
+		<result property="userUUID" column="USER_UUID" />
+		<result property="userName" column="USER_NAME" />
+		<result property="userPhone" column="USER_PHONE" />
+		<result property="departmentName" column="DEPARTMENT_NAME" />
+		<result property="companyName" column="COMPANY_NAME" />
+		<result property="userLevel" column="USER_LEVEL" />
+		<result property="state" column="STATE" />
+		<result property="departmentUUID" column="DEPARTMENT_UUID" />
+		<result property="companyUUID" column="COMPANY_UUID" />
+	</resultMap>
+	<!-- 登录 -->
+	<select id="findUserLogin" parameterType="java.util.Map"
+		resultMap="userMap">
+		SELECT * FROM userLogin WHERE LOGIN_USER = #{loginUser} AND
+		LOGIN_PASSWORD = #{loginPassWord} AND STATE = '1'
+	</select>
+	<select id="getPermissionsByGroupIds" parameterType="java.util.Map"
+		resultType="java.lang.String" useCache="true" flushCache="true">
+		SELECT
+		GROUP_CONCAT(DISTINCT PERMISSION_ID)
+		FROM
+		`snp`.`security_group_permission`
+		WHERE `GROUP_ID`
+		IN
+		<foreach collection="str" item="item" index="index" open="("
+			close=")" separator=",">
+			#{item}
+		</foreach>
+	</select>
+
+	<!-- 查询logo -->
+	<select id="selectLogo" resultMap="logoMap" parameterType="java.lang.String">
+		SELECT * FROM logo WHERE userId = #{userId}
+	</select>
+
+	<!-- 修改Logo -->
+	<update id="updateLogo" parameterType="com.htstd.domain.logoPojo">
+		UPDATE logo SET path =
+		#{path,jdbcType=VARCHAR} 
+		WHERE userId =
+		#{userId,jdbcType=VARCHAR}
+	</update>
+	<!-- 添加logo -->
+	<insert id="insertLogo" parameterType="com.htstd.domain.logoPojo">
+	INSERT INTO logo (path,userId) VALUES (
+	  #{path,jdbcType=VARCHAR},
+	  #{userId,jdbcType=VARCHAR}
+	)
+	</insert>
+	
+	<!-- 查询数据字典 -->
+	<select id="selectdataDictionaryList" resultMap="dataMap">
+		select * from
+		data_dictionary
+	</select>
+
+	<!-- 修改数据字典 -->
+	<update id="updateDictionary" parameterType="com.htstd.domain.dataDictionaryPojo">
+		UPDATE data_dictionary SET
+
+		<if test='dictionaryStatus != null'>
+			DICTIONARY_STATUS = #{dictionaryStatus,jdbcType=VARCHAR}
+		</if>
+		<if test='dictionaryValue != null'>
+			DICTIONARY_VALUE = #{dictionaryValue,jdbcType=VARCHAR}
+		</if>
+		WHERE id = #{id,jdbcType=INTEGER}
+	</update>
+	<!-- 查询角色集合 -->
+	<select id="selectRoleList" resultMap="roleMap" parameterType="java.util.Map">
+		SELECT* FROM role where 1=1 limit #{startPos},#{pageSize}
+	</select>
+	<!-- 查询角色集合总行数 -->
+	<select id="selectRoleListTotal" resultType="java.lang.Integer">
+		SELECT COUNT(*) FROM
+		role where 1=1
+	</select>
+	<!-- 更改客户基本信息 -->
+	<update id="updateCompanyInfo" parameterType="com.htstd.domain.companyPojo">
+		UPDATE company
+		SET
+		<if test='companyName != null'>
+			COMPANY_NAME = #{companyName,jdbcType=VARCHAR},
+		</if>
+		<if test='companyCode != null'>
+			COMPANY_CODE = #{companyCode,jdbcType=VARCHAR},
+		</if>
+		<if test='companyAddress != null'>
+			COMPANY_ADDRESS = #{companyAddress,jdbcType=VARCHAR},
+		</if>
+		<if test='companyZipCode != null'>
+			COMPANY_ZIP_CODE = #{companyZipCode,jdbcType=VARCHAR},
+		</if>
+		<if test='companyOpenBank != null'>
+			COMPANY_OPEN_BANK = #{companyOpenBank,jdbcType=VARCHAR},
+		</if>
+		<if test='companyCardNumber != null'>
+			COMPANY_CARD_NUMBER =
+			#{companyCardNumber,jdbcType=VARCHAR}
+		</if>
+		<if test='cretificateName != null'>
+			CERTIFICATE_NAME = #{cretificateName,jdbcType=VARCHAR},
+		</if>
+		<if test='cretificateAddress != null'>
+			CERTIFICATE_ADDRESS =
+			#{cretificateAddress,jdbcType=VARCHAR}
+		</if>
+		<if test='invoiceHead != null'>
+			INVOICE_HEAD = #{invoiceHead,jdbcType=VARCHAR}
+		</if>
+
+		WHERE COMPANY_UUID = #{companyUUID,jdbcType=INTEGER}
+	</update>
+	<!-- 展示客户基本信息 -->
+	<select id="selectCompanyById" resultMap="companyMap"
+		parameterType="java.lang.String">
+		SELECT * FROM company WHERE COMPANY_UUID =
+		#{companyUUID}
+	</select>
+	<!-- 查询用户信息 -->
+	<select id="selectUserList" resultMap="userVOMap" parameterType="java.util.HashMap">
+		SELECT
+		u.USER_UUID,
+		u.USER_NAME,
+		u.USER_PHONE,
+		u.STATE,
+		u.USER_LEVEL,
+		c.COMPANY_NAME,
+		d.DEPARTMENT_NAME
+		FROM userLogin u
+		LEFT JOIN company c on c.COMPANY_UUID =
+		u.COMPANY_UUID
+		LEFT JOIN department d on d.DEPARTMENT_UUID = u.DEPARTMENT_UUID
+		WHERE 1=1
+		<if test="uservo.userName != null and uservo.userName != '' ">
+			and u.USER_NAME = #{uservo.userName}
+		</if>
+		<if test="uservo.companyUUID != null and uservo.companyUUID != '' ">
+			and c.COMPANY_UUID = #{uservo.companyUUID}
+		</if>
+		<if test="uservo.departmentUUID != null and uservo.departmentUUID != '' ">
+			and d.DEPARTMENT_UUID = #{uservo.departmentUUID}
+		</if>
+		<if test="uservo.state != null and uservo.state != '' ">
+			and u.STATE = #{uservo.state}
+		</if>
+		limit #{startPos},#{pageSize}
+	</select>
+	<!-- 查询用户信息总行数 -->
+	<select id="selectUserListTotal" resultType="java.lang.Integer"
+		parameterType="java.util.HashMap">
+		SELECT
+		COUNT(*)
+		FROM userLogin u
+		LEFT JOIN company c on c.COMPANY_UUID =
+		u.COMPANY_UUID
+		LEFT JOIN department d on d.DEPARTMENT_UUID = u.DEPARTMENT_UUID
+		WHERE 1=1
+		<if test="uservo.userName != null and uservo.userName != '' ">
+			and u.USER_NAME = #{uservo.userName}
+		</if>
+		<if test="uservo.companyUUID != null and uservo.companyUUID != '' ">
+			and c.COMPANY_UUID = #{uservo.companyUUID}
+		</if>
+		<if test="uservo.departmentUUID != null and uservo.departmentUUID != '' ">
+			and d.DEPARTMENT_UUID = #{uservo.departmentUUID}
+		</if>
+		<if test="uservo.state != null and uservo.state != '' ">
+			and u.STATE = #{uservo.state}
+		</if>
+
+	</select>
+	<!-- 查詢部門信息 -->
+	<select id="selectDepartmentByCompany" resultMap="departmentMap"
+		parameterType="java.lang.String">
+		select * from department where department_company_uuid =
+		#{departmentCompanyUUID} ORDER BY department_number ASC
+	</select>
+	<!-- 添加部门信息 -->
+	<insert id="insertDepartment" parameterType="com.htstd.domain.departmentPojo">
+		INSERT INTO
+		department (
+		department_uuid,department_code,department_name,department_company_uuid,department_parent,department_number
+		) VALUES (
+		#{departmentUUID,jdbcType=VARCHAR},
+		#{departmentCode,jdbcType=VARCHAR},
+		#{departmentName,jdbcType=VARCHAR},
+		#{departmentCompanyUUID,jdbcType=VARCHAR},
+		#{departmentParent,jdbcType=VARCHAR},
+		#{departmentNumber,jdbcType=INTEGER}
+		)
+	</insert>
+
+	<!-- 查询所有客户信息 -->
+	<select id="selectAllCompany" resultMap="companyMap">
+		SELECT * FROM company
+	</select>
+
+	<insert id="insertUserInfo" parameterType="com.htstd.domain.userLoginPojo">
+		INSERT INTO userlogin
+		(
+		USER_UUID,
+		LOGIN_USER,
+		LOGIN_PASSWORD,
+		USER_NAME,
+		USER_EMAIL,
+		USER_ADDRESS,
+		USER_FAX,
+		USER_PHONE,
+		USER_TELEPHONE,
+		REMARK,
+		DEPARTMENT_UUID,
+		COMPANY_UUID,
+		USER_LEVEL,
+		STATE
+		)
+		VALUES
+		(
+		#{userUUID,jdbcType=VARCHAR},
+		#{loginUser,jdbcType=VARCHAR},
+		#{loginPassWord,jdbcType=VARCHAR},
+		#{userName,jdbcType=VARCHAR},
+		#{userEmail,jdbcType=VARCHAR},
+		#{userAddress,jdbcType=VARCHAR},
+		#{userFax,jdbcType=VARCHAR},
+		#{userPhone,jdbcType=VARCHAR},
+		#{userTelephone,jdbcType=VARCHAR},
+		#{remark,jdbcType=VARCHAR},
+		#{departmentUUID,jdbcType=VARCHAR},
+		#{companyUUID,jdbcType=VARCHAR},
+		#{userLevel,jdbcType=VARCHAR},
+		#{state,jdbcType=VARCHAR}
+		)
+	</insert>
+	<!-- 删除用户 -->
+	<delete id="deleteUser" parameterType="java.lang.String">
+		DELETE FROM userlogin
+		WHERE user_uuid = #{userUUID}
+	</delete>
+	<!-- 授权用户 -->
+	<update id="updateUserLogin" parameterType="com.htstd.domain.userLoginPojo">
+		UPDATE userlogin
+		SET
+		<if test="userName != null">
+			user_name = #{userName,jdbcType=VARCHAR},
+		</if>
+		<if test="userPhone != null">
+			user_phone = #{userPhone,jdbcType=VARCHAR},
+		</if>
+		<if test="loginPassWord != null">
+			login_password = #{loginPassWord,jdbcType=VARCHAR},
+		</if>
+		<if test="departmentUUID != null">
+			department_uuid = #{departmentUUID,jdbcType=VARCHAR},
+		</if>
+		<if test="userFax != null">
+			user_fax = #{userFax,jdbcType=VARCHAR},
+		</if>
+		<if test="remark != null">
+			remark = #{remark,jdbcType=VARCHAR},
+		</if>
+		<if test="userTelephone != null">
+			user_telephone = #{userTelephone,jdbcType=VARCHAR},
+		</if>
+		<if test="userLevel != null">
+			user_level = #{userLevel,jdbcType=VARCHAR}
+		</if>
+		where user_uuid= #{userUUID,jdbcType=VARCHAR}
+
+	</update>
+	
+
+
+</mapper>

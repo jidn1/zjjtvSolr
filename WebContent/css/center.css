@@ -1,0 +1,54 @@
+/**
+  主页样式
+**/
+.con-l {
+    padding-top: 15px;
+    width: 1890px;
+    overflow-x:auto; 
+}
+* {
+    margin: 0 auto;
+}
+* {
+    font-size: 12px;
+    margin: 0;
+    padding: 0;
+}
+.show {
+    overflow: hidden;
+    padding: 0;
+    width: 100%;
+}
+.show li {
+    float: left;
+    height: 370px;
+    margin: 0 0 0 3%;
+    width: 45%;
+}
+ul, li {
+    list-style: outside none none;
+}
+.show li p {
+    background-color: #f1f8fd;
+    border: 1px solid #cdd8e3;
+    line-height: 30px;
+    padding-left: 5px;
+    text-align: left;
+}
+.show li p a {
+    color: #163e61;
+    font-size: 14px;
+    font-weight: bold;
+}
+a {
+    text-decoration: none;
+}
+a, .link-style {
+    color: #145c98;
+    cursor: pointer;
+    outline: 0 none;
+    text-decoration: none;
+}
+.echartContainer{
+min-width: 600px; height: 300px; width: 45%; text-align: center; margin: 0 auto;
+}

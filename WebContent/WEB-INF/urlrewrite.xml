@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE urlrewrite PUBLIC "-//tuckey.org//DTD UrlRewrite 3.2//EN"
+        "http://tuckey.org/res/dtds/urlrewrite3.2.dtd">
+<urlrewrite>
+	
+	
+	<!-- 首页url -->
+	<rule>
+		<from>/index.html</from>
+		<to>/index/init.do</to>
+	</rule>
+	<!-- 登录 -->
+	<rule>
+		<from>/user/main.html</from>
+		<to>/user/Login.do</to>
+	</rule>
+	
+	<!-- 登录 -->
+	<rule>
+		<from>/user/check.html</from>
+		<to>/user/check.do</to>
+	</rule>
+	<!-- 下载器具模板 -->
+	<rule>
+		<from>/equip/upload/DownExcel.html</from>
+		<to>/equip/downExcel.do</to>
+	</rule>
+	
+</urlrewrite>

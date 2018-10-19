@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration >
+<classPathEntry location="E:/mysql-connector-java-5.1.10-bin.jar"/>
+  <!-- ibatis -->
+  <!-- <context id="context1" targetRuntime="Ibatis2Java5" > -->
+  <!-- mybatis -->
+  <context id="context1" targetRuntime="MyBatis3" >
+  
+  <commentGenerator >  
+            <property name="suppressAllComments" value="true"/><!-- 是否取消注释 -->  
+            <property name="suppressDate" value="true" /> <!-- 是否生成注释代时间戳-->  
+   </commentGenerator> 
+  <!-- 
+  <plugin type="org.mybatis.generator.plugins.ToStringPlugin"></plugin>
+  <plugin type="org.mybatis.generaotr.plugins.EqualsHashCodePlugin"></plugin> -->
+    <!-- 数据库连接 -->
+    <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://localhost:3306/test?useUnicode=true&amp;characterEncoding=UTF-8" userId="root" password="root" />
+    <!-- 实体 -->
+    <javaModelGenerator targetPackage="com.jidn.pojo" targetProject="limsEC" />
+    <!-- 实体映射 xml文件 -->
+    <sqlMapGenerator targetPackage="com.jidn.dao" targetProject="limsEC" />
+    <!-- 生成DAO文件 -->
+    <!-- ibatis -->
+    <!-- <javaClientGenerator targetPackage="com.jidn.dao" targetProject="limsEC" type="SPRING" />  -->
+    <!-- mybatis -->
+     <javaClientGenerator targetPackage="com.jidn.dao" targetProject="limsEC" type="XMLMAPPER" />
+    <!-- schema oracle 使用 -->
+    <table schema="" tableName="TB_USER" domainObjectName="user" >
+      <!-- <columnOverride column="???" property="???" /> -->
+    </table>
+  </context>
+</generatorConfiguration>

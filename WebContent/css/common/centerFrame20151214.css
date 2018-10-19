@@ -1,0 +1,679 @@
+/* -------------------------------------- */
+/*      Resets/Browser Normalization      */
+/* -------------------------------------- */
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+caption, tfoot, thead {
+    border: 0;
+    margin: 0;
+    outline: 0;
+    padding: 0;
+    font-size: 100%;
+    background: transparent;
+    /*vertical-align: baseline;*/
+}
+table, tbody, tr, th, td, p{
+	margin: 0;
+    outline: 0;
+    padding: 0;
+    font-size: 100%;
+    background: transparent;
+}
+body{
+	/*margin-top: 45px;*/
+}
+/* ------------------------- */
+/*      Screenlet Style      */
+/* ------------------------- */
+
+.screenlet {
+background-color: #FFFFFF;
+border-right: 0.1em solid #b0cce7;
+border-bottom: 0.2em solid #b0cce7;
+border-left: 0.1em solid #b0cce7;
+height: auto !important;
+height: 1%;
+margin-bottom: 0.1em;
+overflow: auto;
+}
+
+.screenlet-body {
+background-color: #FFFFFF;
+height: auto !important;
+height: 1%;
+padding: 0;
+}
+
+.screenlet-body div {
+margin: 0;
+}
+
+/* Special Screenlet style for locale and timezone window */
+.lists.screenlet {
+margin-left: 25%;
+margin-right: 25%;
+margin-top: 1em;
+}
+
+.lists.screenlet .basic-table tr td {
+text-align: center;
+}
+
+.lists.screenlet .basic-table tr td a {
+display: block;
+}
+/* ------------------------------ */
+/*      Basic Element Styles      */
+/* ------------------------------ */
+h1, .h1 {
+font-size: 1.6em;
+font-weight: bold;
+}
+
+h2, .h2 {
+/*display:none;	*/
+}
+
+h3, .h3 {
+/*display:none;*/
+font-size: 1.1em;
+font-weight: bold;
+}
+a, a:visited {
+color: #333;font-family: "microsoft yahei";
+}
+
+a:hover, a:active {
+text-decoration: underline;
+}
+
+.disabled {
+color: #333366;
+text-decoration: none;
+}
+
+body, textarea, input, select {
+font-family: Microsoft YaHei,Verdana, Arial, Helvetica, sans-serif;
+}
+
+
+
+/* ------------------------------- */
+/*      Single Element Styles      */
+/* ------------------------------- */
+a.href_1,a.href_1:visited {
+/* 	color: #3872f0; */
+	text-decoration: underline;
+}
+.alert {
+/* Used for alert text */
+color: #ff0000;
+}
+
+.content-messages p {
+margin: 0.5em 0 0.5em 0;
+}
+
+.hidden {
+height: 0;
+visibility: hidden;
+}
+
+.label {
+/* Used for <input> element labels */
+height: 1.2em; /* Same as <input> height */
+padding-right: 0.7em;
+padding-left: 1.1em;
+text-align: right;
+white-space: nowrap;
+width: 1%;
+vertical-align: middle;
+font-size: 14px;
+}
+
+.required, input.required {
+/* required style for <input> elements */
+/* background-color: #ffffdd; */
+}
+/* ---------------------- */
+/*      Table Styles      */
+/* ---------------------- */
+
+.basic-table {
+background-color: #ffffff;
+color: #000000;
+margin-bottom: 0.1em;
+width: 100%;
+border-collapse:collapse;
+}
+
+form table,
+form .basic-table,
+.screenlet-body .basic-table {
+background: transparent;
+margin-bottom: 0;
+border-collapse:collapse;
+}
+
+.basic-table tr.header-row-2 td {
+/* Style for all cells */
+padding: 0.5em 1em;
+vertical-align: middle;
+font-size: 14px;
+font-family:Microsoft YaHei,Arial,Helvetica;
+border-right: 1px dotted #ccc;
+border-bottom: 1px dotted #ccc;
+}
+
+.basic-table tr td {
+/* Style for all cells */
+padding: 0.3em 0.5em;
+vertical-align: middle;
+font-size: 14px;
+font-family:Microsoft YaHei,Arial,Helvetica;
+border-right: 1px dotted #ccc;
+border-bottom: 1px dotted #ccc;
+empty-cells : show;
+}
+
+.basic-table tr .align-bottom {
+vertical-align: bottom;
+}
+
+.basic-table tr .align-top {
+vertical-align: top;
+}
+
+.basic-table tr .label,
+.basic-table tr .group-label {
+/* field labels for forms */
+text-align: right;
+padding-right: 0.5em;
+white-space: nowrap;
+width: 1%;
+}
+
+.basic-table tr .group-label {
+/* "header" for field label groups */
+font-size: 1.2em;
+padding: 2em 1.5em 0 0;
+}
+
+.basic-table tr th,
+.basic-table .header-row {
+text-align: left;
+}
+
+.basic-table .header-row td {
+border-top: 1px solid #d6d6d6;
+border-bottom: 1px solid #d6d6d6;
+line-height:20px;
+border-right: 1px dotted #d6d6d6;
+  background: -webkit-linear-gradient(top,#fafafa 0,#ebebeb 100%);
+  background: -moz-linear-gradient(top,#fafafa 0,#ebebeb 100%);
+  background: -o-linear-gradient(top,#fafafa 0,#ebebeb 100%);
+  background: linear-gradient(to bottom,#fafafa 0,#ebebeb 100%);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#fafafa,endColorstr=#ebebeb,GradientType=0);
+}
+
+.basic-table .header-row td a {
+color: #000000;
+}
+
+.basic-table .alternate-row {
+/* Alternating row style */
+background-color: #e6f4fa;
+}
+
+.basic-table .selected {
+background: #FFFCCF;
+}
+
+.basic-table .alternate-rowSelected {
+background: #FFF55F;
+}
+
+.basic-table .Validate {
+/*Style use by alt-row-style on list*/
+background: #A0D5F7;
+}
+
+.basic-table .alternate-rowValidate {
+/*Style use by alt-row-style on list*/
+background: #72A8F2;
+}
+
+.basic-table .Warn {
+/*Style use by alt-row-style on list*/
+background: #f55C5C;
+}
+
+.basic-table .alternate-rowWarn {
+/*Style use by alt-row-style on list*/
+background: #FC7455;
+}
+
+.basic-table tr .button-col {
+/* button column style - for the small
+collection of buttons used in lists */
+vertical-align: top;
+}
+
+.basic-table .collapsed {
+visibility: collapse;
+}
+
+/*      Alternate table header style      */
+.basic-table .header-row-2 th,
+.basic-table .header-row-2 td {
+border-top: 1px solid #d6d6d6;
+border-bottom: 1px solid #d6d6d6;;
+border-right: 1px dotted #d6d6d6;
+color: #000;
+font-weight: normal;
+font-size: 14px;
+font-family: Microsoft YaHei,Arial,Helvetica;
+  background: -webkit-linear-gradient(top,#fafafa 0,#ebebeb 100%);
+  background: -moz-linear-gradient(top,#fafafa 0,#ebebeb 100%);
+  background: -o-linear-gradient(top,#fafafa 0,#ebebeb 100%);
+  background: linear-gradient(to bottom,#fafafa 0,#ebebeb 100%);
+  background-repeat: repeat-x;
+  /* background: #ebebeb url(images/frame/main_bg08.png) repeat-x; */
+  /*filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#fafafa,endColorstr=#ebebeb,GradientType=0);*/
+}
+
+/*      Sort field style      */
+.basic-table .header-row-2 th .sort-order-asc,
+.basic-table .header-row-2 td .sort-order-asc{
+background: url(/images/arrow-gr-up.png) no-repeat right;
+padding-right: 20px; /* Setting must be in px */
+}
+.basic-table .header-row-2 th .sort-order-desc,
+.basic-table .header-row-2 td .sort-order-desc{
+background: url(/images/arrow-gr-dw.png) no-repeat right;
+padding-right: 20px; /* Setting must be in px */
+}
+.basic-table .header-row-2 th .sort-order,
+.basic-table .header-row-2 td .sort-order{
+background: url(/images/arrow-gr.png) no-repeat right;
+padding-left: 0.5em;
+padding-right: 20px; /* Setting must be in px */
+color:#000;
+}
+/* ------------------------------------- */
+/*      Table decorator - Hover bar      */
+/* ------------------------------------- */
+
+.hover-bar tr:hover {
+background-color: #eaf2ff;
+cursor: default;
+}
+
+.hover-bar .header-row-1:hover,
+.hover-bar tr th:hover {
+background-color: #ffffff;
+color: #000000;
+}
+/*
+	Added via JS to <textarea> and class="input_full".
+	Applies to IE6, IE7. Other browsers don't need it.
+*/
+.input_full_wrap {
+	display: block;
+	padding-right: 8px;
+}
+
+/* `UI Consistency
+----------------------------------------------------------------------------------------------------*/
+
+::-moz-focus-inner {
+	border: 0;
+}
+
+input[type="search"]::-webkit-search-decoration {
+	display: none;
+}
+
+input,
+button,
+textarea {
+	margin: 0;
+	vertical-align: middle;
+}
+textarea,
+/*select,*/
+input[type="date"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="email"],
+input[type="month"],
+input[type="number"],
+input[type="password"],
+input[type="search"],
+input[type="tel"],
+input[type="text"],
+input[type="time"],
+input[type="url"],
+input[type="week"] {
+	-webkit-appearance: none;
+	-moz-border-radius: 0;
+	-webkit-border-radius: 0;
+	border-radius: 0;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	/*background-color: #fff;*/
+	border: 0.1em solid;
+	border-color: #848484 #c1c1c1 #e1e1e1;
+	color: #000;
+	outline: 0;
+	padding: 0.2em 0.3em;
+
+	height: 1.8em;
+
+	/* IE7 */
+	*padding-top: 0.2em;
+	*padding-bottom: 0.1em;
+	*height: auto;
+}
+button:focus,
+button:active,
+input:focus,
+input:active,
+select:focus,
+select:active,
+textarea:focus,
+textarea:active {
+	-moz-box-shadow: #5c809c 0 0 5px;
+	-webkit-box-shadow: #5c809c 0 0 5px;
+	box-shadow: #5c809c 0 0 5px;
+	/* for Opera */
+	z-index: 1;
+}
+
+.is_webkit select {
+	/* Tweaks for Safari + Chrome. */
+	background-image: url(images/select_arrow.gif);
+	background-repeat: no-repeat;
+	background-position: right center;
+	padding-right: 20px;
+}
+
+textarea,
+select[multiple] {
+	height: auto;
+}
+
+select[multiple],
+.is_webkit select[multiple] {
+	background-image: none;
+	padding: 0;
+}
+
+textarea {
+	overflow: auto;
+	resize: vertical;
+	width: 100%;
+}
+
+optgroup {
+	color: #000;
+	font-style: normal;
+	font-weight: normal;
+}
+/* `IE6
+----------------------------------------------------------------------------------------------------*/
+
+.ie6_button,
+* html button {
+	background: #ddd url(images/button.png) repeat-x;
+	border: 0.1em solid;
+	border-color: #ddd #bbb #999;
+	cursor: pointer;
+	color: #333;
+	font: Microsoft YaHei,bold 1.2em Arial, sans-serif;
+	padding: 0.2em 1em 0;
+	overflow: visible;
+	width: auto;
+}
+
+* html button {
+	padding-top: 0.1em;
+	padding-bottom: 0.1em;
+}
+
+.ie6_input,
+* html textarea,
+* html select {
+	background: #fff;
+	border: 0.1em solid;
+	border-color: #848484 #c1c1c1 #e1e1e1;
+	color: #000;
+	padding: 0.2em 0.3em 0.1em;
+	font-size: 1.3em;
+	font-family: Microsoft YaHei,Arial, sans-serif;
+	vertical-align: top;
+}
+
+* html select {
+	margin-top: 0.1em;
+}
+/*------------------------------menu------------------------------------------------------------------*/
+.menu {
+	position: absolute;
+	margin: 0;
+	padding: 2px;
+	border-width: 1px;
+	border-style: solid;
+	overflow: hidden;
+}
+
+.menu-item {
+	position: relative;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	white-space: nowrap;
+	cursor: pointer;
+	border-width: 1px;
+	border-style: solid;
+	_height: 20px;
+}
+
+.menu-text {
+	height: 20px;
+	line-height: 20px;
+	float: left;
+	padding-left: 28px;
+}
+
+.menu-icon {
+	position: absolute;
+	width: 16px;
+	height: 16px;
+	left: 2px;
+	top: 50%;
+	margin-top: -8px;
+}
+
+.menu-rightarrow {
+	position: absolute;
+	width: 16px;
+	height: 16px;
+	right: 0;
+	top: 50%;
+	margin-top: -8px;
+}
+
+.menu-line {
+	position: absolute;
+	left: 26px;
+	top: 0;
+	height: 2000px;
+	font-size: 1px;
+}
+
+.menu-sep {
+	margin: 3px 0px 3px 25px;
+	font-size: 1px;
+}
+
+.menu-active {
+	-moz-border-radius: 5px 5px 5px 5px;
+	-webkit-border-radius: 5px 5px 5px 5px;
+	border-radius: 5px 5px 5px 5px;
+}
+
+.menu-item-disabled {
+	opacity: 0.5;
+	filter: alpha(opacity =   50);
+	cursor: default;
+}
+
+.menu-text,.menu-text span {
+	font-size: 14px;
+}
+
+.menu-shadow {
+	position: absolute;
+	-moz-border-radius: 5px 5px 5px 5px;
+	-webkit-border-radius: 5px 5px 5px 5px;
+	border-radius: 5px 5px 5px 5px;
+	background: #ccc;
+	-moz-box-shadow: 2px 2px 3px #cccccc;
+	-webkit-box-shadow: 2px 2px 3px #cccccc;
+	box-shadow: 2px 2px 3px #cccccc;
+	filter: progid:DXImageTransform.Microsoft.Blur(pixelRadius=2, MakeShadow=false,
+		ShadowOpacity=0.2 );
+}
+
+.menu-rightarrow {
+	background: url('images/menu_arrows.png') no-repeat -32px center;
+}
+
+.menu-line {
+	border-left: 1px solid #ccc;
+	border-right: 1px solid #fff;
+}
+
+.menu-sep {
+	border-top: 1px solid #ccc;
+	border-bottom: 1px solid #fff;
+}
+
+.menu {
+	background-color: #fafafa;
+	border-color: #ddd;
+	color: #444;
+}
+
+.menu-content {
+	background: #ffffff;
+}
+
+.menu-item {
+	border-color: transparent;
+	_border-color: #fafafa;
+}
+
+.menu-active {
+	border-color: #b7d2ff;
+	color: #000000;
+	background: #eaf2ff;
+}
+
+.menu-active-disabled {
+	border-color: transparent;
+	background: transparent;
+	color: #444;
+}
+/*/!*------------------------------nav------------------------------------------------------------------*!/*/
+/*.navTitle {*/
+	/*height: 27px;*/
+	/*line-height: 27px;*/
+	/*border-bottom: 1px solid #b0cce7;*/
+	/*background: url(images/frame/main_bg01.png) repeat-x;*/
+	/*text-indent: 12px;*/
+	/*font-size: 14px;*/
+	/*color: #666;	*/
+/*}*/
+/*------------------------------search------------------------------------------------------------------*/
+.search_input {
+		float: left;
+		border:1px solid #F3F3F3;
+		width: 200px;
+		height:25px;
+    	margin:0px;
+    	padding:0px;
+	}
+.search_select {
+	float: left;
+	border:1px solid #F3F3F3;
+	width: 20%;
+	height: 25px;
+	margin:0px;
+   	padding:0px;
+}
+#searchbt{
+	margin:0px;
+	padding:0px;
+	width:75%;
+	float:right;
+	text-align:right;
+}
+.search-bt-left {
+	height: 24px;
+	margin:0px;
+	padding:0px;
+	float:left;
+	background-color:red;
+	background-color:red;
+	width: 40px;
+	border-right:0px solid #1575d5;
+	background: url("../../images/common/search-left.png") no-repeat scroll 0px center transparent;
+	margin-left: 1px;
+	cursor: pointer;
+}
+
+
+.search-bt-right{
+	height: 24px;
+	margin:0px;
+	padding:0px;
+	float:left;
+	width: 16px;
+	background: url("../../images/common/search-right.png") no-repeat scroll 0px center transparent;
+	border-left:0px solid #1575d5;
+	cursor: pointer;
+}
+.searchTxt {
+	float:right;
+	width: 27%;
+	height: 27px;
+	border:0px solid #1575d5;
+	border-image: none;
+	/* position: relative; */
+	z-index: 20;
+	margin-top: 2px;
+	min-width: 700px;
+}
+#searchmore table tr td{
+    font-size: 14px;
+    margin:0px;
+    padding:0px;
+}
+#searchmore table tr td input {
+	width:150px;
+	border:1px solid #F3F3F3;
+}
+#searchmore table tr td select {
+	width:150px;
+	border:1px solid #F3F3F3;
+}

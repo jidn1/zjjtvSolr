@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:mvc="http://www.springframework.org/schema/mvc"
+	   xmlns:p="http://www.springframework.org/schema/p"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:aop="http://www.springframework.org/schema/aop"
+	   xmlns:context="http://www.springframework.org/schema/context"
+	   xsi:schemaLocation="
+		   http://www.springframework.org/schema/beans
+	       http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+	       http://www.springframework.org/schema/aop
+	       http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+	       http://www.springframework.org/schema/tx
+	       http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
+	       http://www.springframework.org/schema/context
+	       http://www.springframework.org/schema/context/spring-context-3.2.xsd
+	       http://www.springframework.org/schema/mvc 
+		   http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd">
+		   
+	<!-- 加载jdbc.properties -->
+	<context:property-placeholder location="classpath:*.properties"/>
+	
+	<!-- 本地数据源 -->
+	<bean id="LocalDataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<property name="jdbcUrl" value="${jdbc.url}" />
+		<property name="driverClass" value="${jdbc.driverclass}" />
+		<property name="user" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+		<property name="maxPoolSize" value="${c3p0.pool.size.max}"/>
+		<property name="minPoolSize" value="${c3p0.pool.size.min}"/>
+		<property name="initialPoolSize" value="${c3p0.pool.size.ini}"/>
+		<property name="acquireIncrement" value="${c3p0.pool.size.increment}"/>
+		<property name="maxIdleTime" value="1800" />
+	</bean>
+
+	
+	<!-- 配置数据源 -->
+	<bean id="dataSource" class="com.htstd.util.DbcontextHolder">
+		<property name="defaultTargetDataSource" ref="LocalDataSource"/>
+		<property name="targetDataSources">
+			<map>
+				<entry key="LocalDataSource" value-ref="LocalDataSource" />
+			</map>
+		</property>
+	</bean> 	   
+	
+	<!-- spring和MyBatis完美整合，不需要mybatis的配置映射文件 --> 
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<!-- 数据库连接池 -->
+		<property name="dataSource" ref="dataSource" />
+		 <!-- 自动扫描mapping.xml文件 -->  
+		<property name="mapperLocations" value="classpath:com/htstd/dao/*.xml"></property>  
+	</bean>
+	
+	
+	<!-- mapper扫描器 -->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<!-- 扫描包路径如果有多个使用，隔开 -->
+		<property name="basePackage" value="com.htstd.dao" />
+		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
+	</bean>
+	
+</beans>

@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type"
+	content="text/html; charset=UTF-8; charset=gb2312">
+<meta charset="UTF-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+<title></title>
+<link rel="stylesheet" href="../css/ec/style.css" type="text/css"></link>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/ec/ec_common.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/common/My97DatePicker/WdatePicker.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/ckeditor/ckeditor.js"></script>
+
+<script type="text/javascript">
+//添加器具方法
+function insertEquipment(){
+	var path = $("#path").val();
+	$("#equipmentForm").attr("action","${pageContext.request.contextPath }/equip/insertEquipment.do").submit();
+}
+	
+function updateEquipment(){
+	var path = $("#path").val();
+	$("#equipmentForm").attr("action","${pageContext.request.contextPath }/equip/updateEquipment.do").submit();
+}
+</script>
+</head>
+<body>
+	<div class="slider_right">
+		<p class="title">
+			<a href="#">主菜单</a> <span>/</span> <a href="#">编辑器具</a>
+		</p>
+		<form action="" method="post" id="equipmentForm" enctype="multipart/form-data">
+			<div class="basic_info">
+				<h3 id="zclick_event" class="z_A">
+					<a href="#">基本信息demo</a>
+				</h3>
+				<span class="SJLS"><a
+					href="${pageContext.request.contextPath}/jsps/EC/My_censorship_history.jsp">送检历史</a></span>
+				<div id="zhidden_enent" class="basic_infoss" style="display: block">
+					<div class="basic_info_con">
+						<div class="basic_info_con_L">
+							<span class="z_names w_names controlCode">档案号</span>
+							<p class="z_star">*</p>
+							<input class="basic_infoForm z_datas" id="equipmentUser" name="equipmentUser" value="###fileNumber###" type="text"  />
+						</div>
+						<div class="basic_info_con_R">
+							<span class="z_names w_names equipStatus">器具状态</span>
+							<p class="z_star">*</p>
+							<div class="z_select_border">
+								<div class="z_container">
+								<input class="basic_infoForm z_datas" id="equipmentUser" name="equipmentUser" value="###equipmentStatus###" type="text"  />
+									<span class="a_span" style="color: #B94A48;"></span>
+								</div>
+							</div>
+						</div>
+						<div class="basic_info_con_L">
+							<span class="z_names testGroup">计量类别</span>
+							<p class="z_star"></p>
+							<input class="basic_infoForm basic_infoForm_b required"
+								id="measurementCategory" name="measurementCategory" value=""
+								type="text" placeholder="" /> <span class="a_spans1"></span>
+						</div>
+					</div>
+					<div class="basic_info_con">
+						<div class="basic_info_con_L">
+							<span class="z_names w_names equipName">器具名称</span>
+							<p class="z_star">*</p>
+							<input class="basic_infoForm z_datas" id="equipmentUser" name="equipmentUser" value="###equipmentName###" type="text"  />
+						</div>
+						<div class="basic_info_con_R">
+							<span class="z_names w_names equipOrderType">客户编号</span>
+							<p class="z_star">*</p>
+							<input class="basic_infoForm z_datas" id="equipmentUser" name="equipmentUser" value="###customerNumber###" type="text"  />
+						</div>
+						<div class="basic_info_con_R">
+							<span class="z_names testDate">器具数量</span>
+							<p class="z_star"></p>
+							<input class="basic_infoForm z_datas" id="equipmentUser"
+							name="equipmentUser" value="###equipmentCount###" type="text" placeholder="" />
+						</div>
+					</div>
+					<div class="basic_info_con">
+						<div class="basic_info_con_L">
+							<span class="z_names w_names factoryNo">出厂编号</span>
+							<p class="z_star">*</p>
+							<input class="basic_infoForm basic_infoForm_c required"
+								id="serialNumber" name="serialNumber" value="" type="text"
+								placeholder="" /> <span class="a_spans2"></span>
+						</div>
+
+						<div class="basic_info_con_L equipAcceptDate">
+							<span class="z_names">出厂日期</span>
+							<p class="z_star"></p>
+							<input class="basic_infoForm basic_infoForm_c "
+								id="productionDate" name="productionDate"
+								onchange="checkStartData(this.value)" onClick="WdatePicker()"
+								value="" type="text" placeholder="" readonly />
+						</div>
+					</div>
+					<div class="basic_info_con">
+						<div class="basic_info_con_L">
+							<span class="z_names manufacture">生产厂家</span>
+							<p class="z_star"></p>
+							<input class="basic_infoForm" id="manufacturer"
+								name="manufacturer" type="text" value=""
+								placeholder="" />
+						</div>
+						<div class="basic_info_con_R">
+							<span class="z_names equipType">ABC分类</span>
+							<p class="z_star"></p>
+							<div class="z_select_border">
+								<div class="z_container">
+								</div>
+							</div>
+						</div>
+						<div class="basic_info_con_L">
+							<span class="z_names w_names equipName">ABC编号</span>
+							<p class="z_star"></p>
+							<input class="basic_infoForm basic_infoForm_b required"
+								id="abcNumber" name="abcNumber" value="" type="text"
+								placeholder="" /> <span class="a_spans1"></span>
+						</div>
+					</div>
+					<div class="basic_info_con">
+						
+						<div class="basic_info_con_L info_line">
+							<span class="z_names accuracyLevel">彩色附录</span>
+							<p class="z_star"></p>
+						</div>
+					</div>
+					<div class="basic_info_con">
+						<div class="basic_info_con_L info_line">
+							<span class="z_names accuracyLevel">备注</span>
+							<p class="z_star"></p>
+							<input class="basic_infoForm" id="basicRemark" name="basicRemark"
+								type="text" value="" placeholder="" />
+						</div>
+					</div>
+					<div class="basic_info_con">
+						<div class="basic_info_con_L info_line">
+							<span class="z_names accuracyLevel">准确度等级</span>
+							<p class="z_star"></p>
+							<input class="basic_infoForm" id="accuracyLevel"
+								name="accuracyLevel" type="text" value="" placeholder="" />
+						</div>
+					</div>
+					<div class="basic_info_con">
+						<div class="basic_info_con_L info_line">
+							<span class="z_names measurementRange">测量范围</span>
+							<p class="z_star"></p>
+							<input class="basic_infoForm" id="measuringRange"
+								name="measuringRange" value="" type="text" placeholder="" />
+						</div>
+					</div>
+					<div class="basic_info_con">
+						<div class="basic_info_con_L info_line">
+							<span class="z_names indeterminacy">不确定度</span>
+							<p class="z_star"></p>
+							<input class="basic_infoForm" id="uncertainty" name="uncertainty"
+								value="" type="text" placeholder="" />
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+			<div class="basic_info">
+				<h3 id="zclick_event" class="z_A">
+					<a href="#">校检信息</a>
+				</h3>
+				<div id="zhidden_enent" class="basic_infoss" style="display: block">
+					<div class="basic_info_con">
+						<div class="basic_info_con_L">
+							<span class="z_names certNo">证书编号</span>
+							<p class="z_star"></p>
+							<input class="basic_infoForm" id="certificateNumber"
+								name="certificateNumber" value="" type="text" placeholder="" />
+						</div>
+						<div class="basic_info_con_R">
+							<span class="z_names testDate">首次校验日期</span>
+							<p class="z_star"></p>
+							<input class="basic_infoForm" id="firstInspectionDate"
+								onchange="settestVaildDate();" name="firstInspectionDate"
+								onClick="WdatePicker()" value="" type="text" placeholder=""
+								readonly />
+						</div>
+						<div class="basic_info_con_L">
+							<span class="z_names certNo">检定单位</span>
+							<p class="z_star"></p>
+							<input class="basic_infoForm" id="verificationUnit"
+								name="verificationUnit" value="" type="text" placeholder="" />
+						</div>
+					</div>
+				</div>
+
+				<div class="basic_info_con">
+					<div class="basic_info_con_L">
+						<span class="z_names testDate">完成日期</span>
+						<p class="z_star"></p>
+						<input class="basic_infoForm" id="completionDate"
+							onchange="settestVaildDate();" name="completionDate"
+							onClick="WdatePicker()" value="" type="text" placeholder=""
+							readonly />
+					</div>
+					<div class="basic_info_con_R">
+						<span class="z_names testFee">检定机构</span>
+						<p class="z_star"></p>
+						<input class="basic_infoForm" id="verificationInstitution"
+							name="verificationInstitution" type="text" value=""
+							placeholder="" />
+					</div>
+					<div class="basic_info_con_L">
+						<span class="z_names budgetTestFee">校验日期</span>
+						<p class="z_star"></p>
+						<input class="basic_infoForm" id="verificationDate"
+							onchange="settestVaildDate();" name="verificationDate"
+							onClick="WdatePicker()" value="" type="text" placeholder=""
+							readonly />
+					</div>
+				</div>
+
+
+				<div class="basic_info_con">
+					<div class="basic_info_con_L">
+						<span class="z_names testCycle">检定周期</span>
+						<p class="z_star"></p>
+						<input class="basic_infoForm z_datas" id="verificationCycle"
+							name="verificationCycle" onchange="settestVaildDate();" value=""
+							type="text" placeholder="单位为月" />
+					</div>
+					<div class="basic_info_con_R">
+						<span class="z_names testVaildDate">有效日期</span>
+						<p class="z_star"></p>
+						<input class="basic_infoForm" id="validDate" name="validDate"
+							onClick="WdatePicker()" value="" type="text" placeholder=""
+							readonly />
+					</div>
+					<div class="basic_info_con_L">
+						<span class="z_names testResult">检定结果</span>
+						<p class="z_star"></p>
+						<div class="z_select_border">
+							<div class="z_container">
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="basic_info_con">
+					<div class="basic_info_con_L">
+						<span class="z_names testCycle">送检类型</span>
+						<p class="z_star"></p>
+						<input class="basic_infoForm" id="inspectionType"
+							name="inspectionType" type="text" value="" placeholder=""
+							 />
+					</div>
+					<div class="basic_info_con_R">
+						<span class="z_names testVaildDate">校准费</span>
+						<p class="z_star"></p>
+						<input class="basic_infoForm" id="calibrationFee"
+							name="calibrationFee" type="text" value="" placeholder=""
+							 />
+					</div>
+					<div class="basic_info_con_L">
+						<span class="z_names testResult">预算费用</span>
+						<p class="z_star"></p>
+						<input class="basic_infoForm" id="budgetFee" name="budgetFee"
+							type="text" value="${equipment.budgetFee}" placeholder=""  />
+					</div>
+				</div>
+
+				<div class="basic_info_con">
+					<div class="basic_info_con_L">
+						<span class="z_names testCycle">检定员</span>
+						<p class="z_star"></p>
+						<input class="basic_infoForm" id="equipmentVerified"
+							name="equipmentVerified" type="text" value="" placeholder=""
+							 />
+					</div>
+					<div class="basic_info_con_R">
+						<span class="z_names testVaildDate">校检备注</span>
+						<p class="z_star"></p>
+						<input class="basic_infoForm" id="checkRemark" name="checkRemark"
+							type="text" value="" placeholder="" />
+					</div>
+				</div>
+			</div>
+
+			<div class="basic_info">
+				<h3 id="zclick_event" class="z_A">
+					<a href="#">保管信息</a>
+				</h3>
+				<div id="zhidden_enent" class="basic_infoss" style="display: block">
+					<div class="basic_info_con">
+						<div class="basic_info_con_L">
+							<span class="z_names certNo">接收状态</span>
+							<p class="z_star"></p>
+							<input class="basic_infoForm" id="receiveState"
+								name="receiveState" value="" type="text" placeholder="" />
+						</div>
+						<div class="basic_info_con_R">
+							<span class="z_names testDate">接收日期</span>
+							<p class="z_star"></p>
+							<input class="basic_infoForm" id="receiveDate"
+								onchange="settestVaildDate();" name="receiveDate"
+								onClick="WdatePicker()" value="" type="text" placeholder=""
+								readonly />
+						</div>
+						<div class="basic_info_con_L">
+							<span class="z_names certNo">负责人</span>
+							<p class="z_star"></p>
+							<input class="basic_infoForm" id="equipmentPerson"
+								name="equipmentPerson" value="" type="text" placeholder="" />
+						</div>
+					</div>
+
+				</div>
+				<div class="basic_info_con">
+					<div class="basic_info_con_L">
+						<span class="z_names testDate">启用时间</span>
+						<p class="z_star"></p>
+						<input class="basic_infoForm" id="enableDate"
+							onchange="settestVaildDate();" name="enableDate"
+							onClick="WdatePicker()" value="" type="text" placeholder=""
+							readonly />
+					</div>
+					<div class="basic_info_con_R">
+						<span class="z_names testFee">所属部门</span>
+						<p class="z_star"></p>
+						<input class="basic_infoForm" id="subordinateSector"
+							name="subordinateSector" type="text" value="" placeholder=""
+							 />
+					</div>
+					<div class="basic_info_con_L">
+						<span class="z_names budgetTestFee">购置日期</span>
+						<p class="z_star"></p>
+						<input class="basic_infoForm" id="purchaseDate"
+							onchange="settestVaildDate();" name="purchaseDate"
+							onClick="WdatePicker()" value="" type="text" placeholder=""
+							readonly />
+					</div>
+				</div>
+
+
+				<div class="basic_info_con">
+					<div class="basic_info_con_L">
+						<span class="z_names testCycle">使用人</span>
+						<p class="z_star"></p>
+						<input class="basic_infoForm z_datas" id="equipmentUser"
+							name="equipmentUser" value="" type="text" placeholder="" />
+					</div>
+					<div class="basic_info_con_R">
+						<span class="z_names testVaildDate">使用单位</span>
+						<p class="z_star"></p>
+						<input class="basic_infoForm z_datas" id="equipmentUseunit"
+							name="equipmentUseunit" value="" type="text" placeholder="" />
+					</div>
+					<div class="basic_info_con_L">
+						<span class="z_names testResult">购置价</span>
+						<p class="z_star"></p>
+						<input class="basic_infoForm z_datas" id="purchasePrice"
+							name="purchasePrice" value="" type="text" placeholder="" />
+					</div>
+				</div>
+
+				
+
+				<div class="bot_btns">
+					<a class="s_trw"  href="${pageContext.request.contextPath}/toHtml?file_name=demoToHtml.jsp&&path=jsps/EC&&realName=appliances&&realPath=html" style="cursor: pointer;">HTML</a>
+					<!-- href="/toHtml?file_name=edit_appliances_info.jsp&&path=jsps/EC&&realName=appliances&&realPath=html" -->
+					<!-- <a class="s_trw" href="${pageContext.request.contextPath}/page/writeHtml.do" style="cursor: pointer;">HTML</a> -->
+					<a class="s_trw" href="/limsEC/html/demoToHtml.html" style="cursor: pointer;">显示页面</a>
+					<a href="#" onclick="javascript:window.history.back();">返回</a>
+				</div>
+			</div>
+
+		</form>
+	</div>
+	
+</body>
+</html>

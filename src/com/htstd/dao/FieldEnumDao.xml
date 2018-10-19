@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.htstd.dao.FieldEnumDao">
+
+	<resultMap type="com.htstd.domain.FieldCustomPojo" id="fieldMap">
+		<result property="id" column="ID" />
+		<result property="fieldName" column="FIELD_NAME" />
+		<result property="fieldType" column="FIELD_TYPE" />
+		<result property="fieldDescrib" column="FIELD_DESCRIBE" />
+		<result property="userId" column="USER_ID" />
+	</resultMap>
+	<resultMap type="com.htstd.domain.enumCustomPojo" id="enumMap">
+		<result property="enumid" column="enumid" />
+		<result property="enumValue" column="enumValue" />
+		<result property="fieldid" column="fieldid" />
+		<result property="userId" column="userId" />
+	</resultMap>
+	
+    <!-- 添加枚举值-->
+	<insert id="insertEnum" parameterType="com.htstd.domain.enumCustomPojo">
+		INSERT INTO enum_custom  
+		(enumValue,fieldid,userId)
+		 VALUES (
+		 #{enumValue,jdbcType=VARCHAR},
+		 #{fieldid,jdbcType=INTEGER},
+		 #{userId,jdbcType=INTEGER}
+		 )
+	</insert>
+	<!-- 删除枚举值 -->
+	<delete id="deleteEnum" parameterType="java.lang.Integer">
+  		DELETE FROM field_custom WHERE ID = #{id}
+	</delete>
+	
+	 <!-- 查看枚举值-->  
+	 <select id="selectEnum" resultMap="enumMap" parameterType="java.util.Map">  
+      select * from enum_custom where fieldid = #{fieldid} and userId = #{userid}
+    </select>  
+     <!-- 根据用户ID查询器具字段-->  
+    <select id="selectfieldByuserId" resultMap="fieldMap" parameterType="java.lang.String">  
+      select * from field_custom WHERE  USER_ID = #{userId}
+    </select>  
+    
+    <!-- 插入用户自定义字段 -->
+	<insert id="insertField" parameterType="com.htstd.domain.FieldCustomPojo">
+		INSERT INTO field_custom  
+		(FIELD_NAME,FIELD_TYPE,FIELD_DESCRIBE,USER_ID)
+		 VALUES (
+		 #{fieldName,jdbcType=VARCHAR},
+		 #{fieldType,jdbcType=VARCHAR},
+		 #{fieldDescrib,jdbcType=VARCHAR},
+		 #{userId,jdbcType=VARCHAR}
+		 )
+	</insert>
+	 <!-- 查看用户字段使用情况-->  
+	 <select id="selectfield" resultMap="fieldMap" parameterType="java.lang.String">  
+      select * from field_custom WHERE  FIELD_NAME like 'spare_%' AND USER_ID = #{userId}
+    </select>  
+    
+     <!-- 查看用户字段枚举字段-->  
+	 <select id="selectfieldEnum" resultMap="fieldMap" parameterType="java.lang.String">  
+      select * from field_custom WHERE  FIELD_TYPE = 'enum' AND USER_ID = #{userId}
+    </select> 
+    <!-- 删除自定义字段 -->
+    <delete id="deleteField" parameterType="java.lang.Integer">
+  		DELETE FROM field_custom WHERE ID = #{id}
+	</delete>
+	
+	<!-- 删除自定义枚举字段 -->
+    <delete id="deleteEnumField" parameterType="java.lang.Integer">
+  		DELETE FROM enum_custom WHERE enumid = #{enumid}
+	</delete>
+    
+</mapper>

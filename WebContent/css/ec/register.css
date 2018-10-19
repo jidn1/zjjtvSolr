@@ -1,0 +1,396 @@
+/*zhuce.css*/ /*浮动、清除浮动*/
+.clearfix:before,.clearfix:after {
+	content: ".";
+	display: block;
+	height: 0;
+	visibility: hidden;
+}
+
+.clearfix:after {
+	clear: both;
+}
+
+.clearfix {
+	zoom: 1;
+}  /* IE < 8 */
+.left {
+	float: left;
+	display: inline;
+}
+
+.right {
+	float: right;
+	display: inline;
+}
+
+body {
+	width: 100%;
+	height: 100%;
+}
+
+/*新用户注册2015-3-30*/
+.Wrapper {
+	background: url(../images/img/bg_register.gif) #c1deee repeat-x left 166px;
+	width: 100%;
+	margin: 0 auto;
+}
+
+#header {
+	background: #fff;
+}
+
+.container1 {
+	margin: 2px auto;
+	min-height: 400px;
+	position: relative;
+	width: 1100px;
+	background: #fff;
+}
+
+.container1-inner {
+	min-height: 400px;
+	background: no-repeat 700px 62px;
+	padding: 5px 26px 40px 92px;
+	position: relative;
+	font-family: "宋体";
+}
+
+.container1-inner h3 {
+	font-size: 20px;
+	font-family: "Microsoft YaHei";
+	color: #333;
+}
+
+.link-index {
+	position: absolute;
+	top: 65px;
+	right: 255px;
+	font-size: 16px;
+	font-family: "Microsoft YaHei";
+}
+
+.link-index a {
+	color: #ff6d00;
+	display: inline-block;
+	height: 20px;
+	margin-left: 13px;
+}
+
+.link-index a:first-child {
+	border-right: 2px solid #d1d1d1;
+	padding-right: 13px;
+}
+
+.registerForm * {
+	outline: none;
+	padding: 0;
+}
+
+.registerForm {
+	width: 775px;
+	font-size: 14px;
+	color: #666;
+	margin-top: 30px;
+}
+
+.registerForm fieldset {
+	border: none;
+}
+
+.registerForm .legend {
+	display: block;
+	background: #d1d1d1;
+	height: 6px;
+	width: 100%;
+	margin: 0 0 50px;
+	padding: 0;
+	position: relative;
+}
+
+.registerForm .legend em {
+	display: block;
+	width: 80px;
+	height: 21px;
+	background: #fff;
+	margin-top: -7px;
+	font-style: normal;
+	position: absolute;
+}
+
+.registerForm .legend em.legend-qy {
+	width: 120px;
+	vertical-align: top;
+}
+
+.registerForm .legend span {
+	background: #7bbbdf;
+	display: inline-block;
+	width: 6px;
+	height: 6px;
+	margin: 0 5px 2px 0;
+}
+
+.registerForm .legend input {
+	margin-right: 5px;
+	vertical-align: text-top;
+}
+
+.registerForm ul {
+	
+}
+
+.registerForm li {
+	margin: 0 0 12px 100px;
+	clear: both;
+	overflow: hidden;
+}
+
+.registerForm li label {
+	display: block;
+	float: left;
+	margin-right: 14px;
+	font-weight: bold;
+	width: 80px;
+	height: 38px;
+	line-height: 38px;
+	text-align: right;
+	cursor: pointer;
+}
+
+.registerForm li div {
+	float: left;
+	min-height: 44px;
+	position: relative;
+}
+
+.registerForm li input[type=text],.registerForm li input[type=password]
+	{
+	width: 388px;
+	height: 38px;
+	line-height: 38px;
+	border: 1px solid #d5c3ac;
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	-o-border-radius: 5px;
+	-ms-border-radius: 5px;
+	padding-left: 10px;
+	font-size: 14px;
+}
+
+.registerForm li em {
+	margin-left: 10px;
+	font-style: normal;
+	color: #f00;
+}
+
+.registerForm li span {
+	display: none;
+	width: 388px;
+	padding-left: 5px;
+	color: #a6a6a6;
+	margin-top: 5px;
+}
+
+/*输入校验样式*/
+.registerForm li input[type=text]:hover,.registerForm li input[type=password]:hover,.registerForm li input[type=password]:focus.registerForm li input[type=text]:focus
+	{
+	border: 1px solid #269a17;
+	-moz-box-shadow: 1px 1px 2px #269a17;
+	-webkit-box-shadow: 1px 1px 2px #269a17;
+	box-shadow: 1px 1px 2px #269a17;
+}
+
+.registerForm li input.input-error {
+	border-color: #e60012;
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 0;
+}
+
+.registerForm li span.info {
+	display: block;
+}
+
+.registerForm li span.info-error {
+	display: block;
+	background: #e60012;
+	height: 30px;
+	margin-top: 0;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+	-moz-border-radius-bottom: 5px;
+	border-radius-bottom: 5px;
+	color: #fff;
+	line-height: 30px;
+}
+
+.registerForm div i {
+	width: 18px;
+	height: 18px;
+	position: absolute;
+	left: 371px;
+	top: 11px;
+}
+
+.registerForm div i.info-success {
+	background: url("../images/img/info_success.png") no-repeat;
+}
+
+/*校验结束*/
+.registerForm li.no-label {
+	padding-left: 95px;
+}
+
+.registerForm li.no-label label {
+	width: 100%;
+	height: auto;
+	line-height: 20px;
+	font-weight: normal;
+	text-align: left;
+}
+
+.registerForm li.no-label input {
+	margin-right: 5px;
+	vertical-align: text-bottom;
+}
+
+.registerForm li.no-label a {
+	color: #dd5e00;
+}
+
+.registerForm li.no-label a:hover {
+	color: #dd5e00;
+	text-decoration: underline;
+}
+
+.registerForm li p.yzm {
+	text-align: right;
+	margin-right: 180px;
+	min-height: 38px;
+}
+
+.registerForm li p.yzm input {
+	display: inline-block;
+	width: 110px;
+	height: 34px;
+	border: 1px solid #d5c3ac;
+	margin-right: 10px;
+	line-height: 34px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	-o-border-radius: 5px;
+	-ms-border-radius: 5px;
+	border-radius: 5px;
+}
+
+.registerForm p.yzm button {
+	display: inline-block;
+	width: 125px;
+	height: 36px;
+	background: #f19149;
+	cursor: pointer;
+	border: none;
+	vertical-align: top;
+	text-align: center;
+	font-size: 14px;
+	font-family: "Microsoft YaHei";
+	line-height: 36px;
+	color: #fff;
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	-o-border-radius: 5px;
+	-ms-border-radius: 5px;
+	transition: background .3s .1s;
+}
+
+.registerForm p.yzm button:hover {
+	background: #dd5e00;
+}
+
+.registerForm p.yzm img {
+	vertical-align: bottom;
+	cursor: pointer;
+	width: 90px;
+	height: 34px;
+}
+
+.registerForm p.yzm em {
+	display: bolock;
+	height: 30px;
+	text-align: right;
+}
+
+.registerForm p.yzm em.btn_error,.registerForm li em.btn_error {
+	display: block;
+	width: 229px;
+	margin-left: 266px;
+	text-align: left;
+	line-height: 30px;
+}
+
+.xieyi em {
+	display: none;
+}
+
+.submitBtn {
+	width: 412px;
+	height: 51px;
+	margin-left: -10px;
+	background: #f19149;
+	border: none;
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	-o-border-radius: 5px;
+	-ms-border-radius: 5px;
+	text-align: center;
+	line-height: 51px;
+	font-size: 22px;
+	font-family: "Microsoft YaHei";
+	color: #fff;
+	cursor: pointer;
+	transition: background .3s .1s;
+}
+
+.submitBtn:hover {
+	background: #dd5e00;
+}
+
+.submitBtn.btn_disabled {
+	background: #ccc;
+}
+#qyyh {
+	display: none;
+}
+.phoneCheckBtn {
+	width: 120px;
+	height: 30px;
+	margin-left: 10px;
+	 background-color: #49afcd;
+  *background-color: #2f96b4;
+	border: none;
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	-o-border-radius: 5px;
+	-ms-border-radius: 5px;
+	text-align: center;
+	line-height: 30px;
+	font-size: 14px;
+	font-family: "Microsoft YaHei";
+	color: #fff;
+	cursor: pointer;
+	transition: background .3s .1s;
+	display: inline-block;
+}
+.phoneCheckBtn:hover,
+.phoneCheckBtn:focus,
+.phoneCheckBtn:active,
+.phoneCheckBtn.active,
+.phoneCheckBtn.disabled,
+.phoneCheckBtn[disabled] {
+  color: #ffffff;
+  background-color: #2f96b4;
+  *background-color: #2a85a0;
+}
